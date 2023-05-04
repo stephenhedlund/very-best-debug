@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     matching_users = User.where({ :username => username })
     @user = matching_users.at(0)
 
-    render({ :template => "user_templates/user_details.html.erb"})
+    render({ :template => "users_templates/user_details.html.erb"})
   end
   
   def create
@@ -30,7 +30,9 @@ class UsersController < ApplicationController
     
     the_user.username = params.fetch("query_username")
     the_user.save
-    redirect_to("/users/#{user.username}")
+
+
+    redirect_to("/users/#{the_user.username}")
   end
 
 end
